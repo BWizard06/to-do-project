@@ -26,3 +26,4 @@ document.addEventListener("DOMContentLoaded", () => {
           taskTitle.style.color = "red";
       }
     });
+    

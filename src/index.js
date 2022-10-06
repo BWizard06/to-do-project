@@ -19,7 +19,7 @@ function changeTask(task){
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('token')}`}, 
         body: JSON.stringify(task)
-    })
+    }).then(window.location.reload())
 
 }
 
@@ -28,6 +28,7 @@ function deleteTask(id){
         method: `DELETE`,
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('token')}`},})
+        //.then(alert("Task deleted"))
         .then(window.location.reload())
 }
 
@@ -46,7 +47,7 @@ function getTasks(tasks) {
             createCell(task.title), 
         );
         deleteButton.innerText = "Delete";
-        changeButton.innerText = "Change";
+        changeButton.innerText = "Change Title";
         chckcell.appendChild(checkBox);
         tableRow.appendChild(chckcell);
         changeCell.appendChild(changeButton);
@@ -58,8 +59,12 @@ function getTasks(tasks) {
         deleteButton.setAttribute("id","delete-button");
         deleteButton.addEventListener("click", () => deleteTask(task.id));
         checkBox.addEventListener("change", () => changeTask({...task, completed: !task.completed}));
-        changeButton.addEventListener("click", () => changeTask(...task));
+        changeButton.addEventListener("click", () => {
+            let newTitle = prompt("Enter new title");
+            changeTask({...task, title: newTitle})
+        });
         checkBox.setAttribute("type", "checkbox");
+        checkBox.setAttribute("id", "checkbox");
         checkBox.checked = task.completed;
 
         task_list.appendChild(tableRow);
@@ -73,5 +78,5 @@ document.addEventListener("DOMContentLoaded", () => {
         taskTitle.innerText = "You are not logged in, click here to login";
         taskTitle.addEventListener("click", () => window.location.href = "./login.html");
         taskTitle.style.color = "red";
-    }
+}
 });
