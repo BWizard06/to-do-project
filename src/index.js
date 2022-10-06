@@ -4,7 +4,7 @@ const createCell = (cellText) => {
     return cell;
 }
 
-function getTask(tasks) {
+function getTasks(tasks) {
     const task_list = document.getElementById("task-list");
     tasks.forEach((task) => {
         const tableRow = document.createElement("tr");
@@ -22,13 +22,10 @@ const tasks_url = 'http://localhost:3000/tasks';
 function indexTasks(){
     fetch(tasks_url)
     .then((response) => response.json())
-    .then((data) => getTask(data))
+    .then((data) => getTasks(data))
 }
 
-function createTask (task) {
-    fetch(tasks_url, {method: `POST`, headers: {'Content-Type': 'application/json'}, body: JSON.stringify(task)})
-    .then()
-}
+
 
 document.addEventListener("DOMContentLoaded", () => {
     indexTasks();

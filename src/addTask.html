@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="/src/addTask.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Add Task</title>
 </head>
 <body>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/src/index.html">To-Do</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -19,34 +20,31 @@
             <li class="nav-item ">
               <a class="nav-link" href="/src/index.html">Tasks</a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="/src/login.html">Login<span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item">
-              <a class="nav-link" href="/src/addTask.html">Add Task</a>
+              <a class="nav-link" href="/src/login.html">Login</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/src/addTask.html">Add Task<span class="sr-only">(current)</span></a>
             </li>
           </ul>
         </div>
       </nav>
-      <!--login form-->
+      <!--create a form to add a new task-->
       <div class="container">
         <div class="row">
-            <div class="col-md-4 offset-md-4">
-                <h3 class="text-center">Login</h3>
-                <form action="/src/login.html" method="POST">
+            <div class="col-md-6">
+                <form id="addTaskForm">
                     <div class="form-group">
-                        <label for="email">E-Mail</label>
-                        <input type="text" name="email" id="username" class="form-control" placeholder="Enter E-Mail">
+                        <label for="taskName">Task Name</label>
+                        <input type="text" class="form-control" id="taskName" placeholder="Enter Task Name">
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" required>
                     </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">Login</button>
-                    </div>
+                    <button type="submit" class="btn btn-primary">Add Task</button>
                 </form>
+                <p id="log"></p>
             </div>
-        </div>
-</body>
+        </div>  
+
+    </body>
 </html>
