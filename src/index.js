@@ -5,16 +5,21 @@ const createCell = (cellText) => {
 }
 
 function changeTask(task){
-    task.completed = !task.completed;
-    fetch(`http://localhost:3000/tasks`, {
-        method: `PUT`,headers: {'Content-Type': 'application/json'}, body: JSON.stringify(task)
+    fetch(`http://localhost:3000/auth/jwt/tasks`, {
+        method: `PUT`,
+        headers: {'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`}, 
+        body: JSON.stringify(task)
     })
 
 }
 
 function deleteTask(id){
-    fetch(`http://localhost:3000/task/${id}`, {method: `DELETE`})
-    .then(window.location.reload())
+    fetch(`http://localhost:3000/auth/jwt/task/${id}`, {
+        method: `DELETE`,
+        headers: {'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`},})
+        .then(window.location.reload())
 }
 
 function getTasks(tasks) {
@@ -24,31 +29,40 @@ function getTasks(tasks) {
         const deleteButton = document.createElement("button");
         const checkBox = document.createElement("input");
         const chckcell = document.createElement("td");
+        const changeButton = document.createElement("button");
+        const changeCell = document.createElement("td");
 
         tableRow.append(
             createCell(task.id), 
             createCell(task.title), 
         );
         deleteButton.innerText = "Delete";
+        changeButton.innerText = "Change";
         chckcell.appendChild(checkBox);
         tableRow.appendChild(chckcell);
+        changeCell.appendChild(changeButton);
+        tableRow.appendChild(changeCell);
         tableRow.appendChild(deleteButton);
+        changeButton.classList.add("btn", "btn-primary"); 
+        changeButton.setAttribute("id","change-button");
         deleteButton.classList.add("btn", "btn-danger", "btn-sm", "delete-button",);
         deleteButton.setAttribute("id","delete-button");
         deleteButton.addEventListener("click", () => deleteTask(task.id));
-        checkBox.addEventListener("change", () => changeTask(task));
+        checkBox.addEventListener("change", () => changeTask({...task, completed: !task.completed}));
+        changeButton.addEventListener("click", () => changeTask(...task));
         checkBox.setAttribute("type", "checkbox");
         checkBox.checked = task.completed;
 
-        
-        
         task_list.appendChild(tableRow);
     });
 };
 
-const tasks_url = 'http://localhost:3000/tasks';
+const tasks_url = 'http://localhost:3000/auth/jwt/tasks';
 function indexTasks(){
-    fetch(tasks_url)
+    fetch(tasks_url, {
+        headers: {'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`}
+    })
     .then((response) => response.json())
     .then((data) => getTasks(data))
 }

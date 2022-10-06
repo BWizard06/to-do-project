@@ -1,15 +1,16 @@
-const tasks_url = 'http://localhost:3000/tasks';
 document.addEventListener("DOMContentLoaded", () => {
     function createTask (task) {
-        fetch(tasks_url, {method: `POST`, headers: {'Content-Type': 'application/json'}, body: JSON.stringify(task)})   
+        fetch("http://localhost:3000/auth/jwt/tasks", {
+            method: `POST`, 
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(task)})
     }
-    function logSubmit(event) {
-        log.textContent = `Task Submitted!`;
-        event.preventDefault();
-      }
+
       
       const form = document.getElementById('addTaskForm');
-      const log = document.getElementById('log');
       form.addEventListener('submit', ()=> {
         const taskName = document.getElementById("taskName");
         let task = {
@@ -17,4 +18,4 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         createTask(task);
       }); 
-    })
+    });
