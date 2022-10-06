@@ -4,6 +4,15 @@ const createCell = (cellText) => {
     return cell;
 }
 
+function indexTasks(){
+    fetch('http://localhost:3000/auth/jwt/tasks', {
+        headers: {'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`}
+    })
+    .then((response) => response.json())
+    .then((data) => getTasks(data))
+}
+
 function changeTask(task){
     fetch(`http://localhost:3000/auth/jwt/tasks`, {
         method: `PUT`,
@@ -56,19 +65,13 @@ function getTasks(tasks) {
         task_list.appendChild(tableRow);
     });
 };
-
-const tasks_url = 'http://localhost:3000/auth/jwt/tasks';
-function indexTasks(){
-    fetch(tasks_url, {
-        headers: {'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`}
-    })
-    .then((response) => response.json())
-    .then((data) => getTasks(data))
-}
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
     indexTasks();
+    const token = localStorage.getItem('token');
+    if (!token) {
+        const taskTitle = document.getElementById("taskTitle");
+        taskTitle.innerText = "You are not logged in, click here to login";
+        taskTitle.addEventListener("click", () => window.location.href = "./login.html");
+        taskTitle.style.color = "red";
+    }
 });

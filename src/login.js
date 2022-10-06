@@ -7,8 +7,18 @@ document.addEventListener("DOMContentLoaded", () => {
             method: `POST`, 
             headers: {'Content-Type': 'application/json'}, 
             body: JSON.stringify(login)})
-            .then((response) => 
-                response.json())
+            .then((response) => {
+                
+                if (response.status < 300) {
+                    window.location.href = "./index.html";
+                    return response.json();
+                } else{
+                    const loginTitle = document.getElementById("loginTitle");
+                    loginTitle.innerText = "Wrong password";
+                    loginTitle.style.color = "red";
+                }
+            })
+
             .then((data) => {
                 localStorage.setItem('token', data.token);
             })
@@ -25,4 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
         createLogin(login);
 
     })
+    const token = localStorage.getItem('token');
+    if (token) {
+    loginTitle.style.color = "green";
+    loginTitle.innerText = "You are already     logged in";
+}
 })
+
+

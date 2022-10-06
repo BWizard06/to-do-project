@@ -17,5 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
             title: taskName.value,
         }
         createTask(task);
-      }); 
+      });
+      const token = localStorage.getItem('token');
+      if (!token) {
+          const taskTitle = document.getElementById("taskTitle");
+          taskTitle.innerText = "You are not logged in, click here to login";
+          taskTitle.addEventListener("click", () => window.location.href = "./login.html");
+          taskTitle.style.color = "red";
+      }
     });
