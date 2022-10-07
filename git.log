@@ -1,0 +1,65 @@
+commit 7d673a9257d0cdd2443d76be4d6472a51f56abb0
+Author: BWizard06 <89217401+BWizard06@users.noreply.github.com>
+Date:   Fri Oct 7 14:25:03 2022 +0200
+
+    remove src folder from the linkings
+
+commit 92e44675633e4f232cba5d232384e50458ce00ee
+Author: BWizard06 <89217401+BWizard06@users.noreply.github.com>
+Date:   Fri Oct 7 13:49:27 2022 +0200
+
+    general user and style improvements
+
+commit 0a032b6e874cad08d8f5bf661730b54f3c7d0b50
+Author: BWizard06 <89217401+BWizard06@users.noreply.github.com>
+Date:   Thu Oct 6 22:48:04 2022 +0200
+
+    README
+
+commit 17c9415ca9be2b202c95bd4d12e0b02ec07efefb
+Author: BWizard06 <89217401+BWizard06@users.noreply.github.com>
+Date:   Thu Oct 6 22:40:12 2022 +0200
+
+    general improvements and able to change title
+
+commit a6643ba5d5df7b52b28218e5aff6b4ea78596dd6
+Author: BWizard06 <89217401+BWizard06@users.noreply.github.com>
+Date:   Thu Oct 6 19:26:51 2022 +0200
+
+    styling changes for login
+
+commit 970bbe3a901d5423e7a6937774af5acf3dbf30f5
+Author: BWizard06 <89217401+BWizard06@users.noreply.github.com>
+Date:   Thu Oct 6 18:23:53 2022 +0200
+
+    able to log in and add, change, delete data
+
+commit d2046f6889823cd104d12849c35108db18e2bb3d
+Author: BWizard06 <89217401+BWizard06@users.noreply.github.com>
+Date:   Thu Oct 6 13:46:33 2022 +0200
+
+    able to delete and change tasks
+
+commit efdf69e3fcb453295e5ed47ab4523f53cef32221
+Author: BWizard06 <89217401+BWizard06@users.noreply.github.com>
+Date:   Thu Oct 6 10:15:23 2022 +0200
+
+    able to add Task
+
+commit b2898d365d66f22cd0193bca560d3f6ba5e4d76e
+Author: BWizard06 <89217401+BWizard06@users.noreply.github.com>
+Date:   Thu Oct 6 08:43:42 2022 +0200
+
+    Tasks indexieren
+
+commit ca9b8a6ff83154dcb4707d04324afcf37bd5b03b
+Author: BWizard06 <89217401+BWizard06@users.noreply.github.com>
+Date:   Wed Oct 5 22:34:00 2022 +0200
+
+    Grundgerüst und erste Task einfügen
+
+commit 3e2d7e2cbd1d96b8c11409c70ff96bef0e6ea226
+Author: BWizard06 <89217401+BWizard06@users.noreply.github.com>
+Date:   Wed Oct 5 18:18:23 2022 +0200
+
+    all files uploaded

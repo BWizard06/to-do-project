@@ -14,7 +14,21 @@ function indexTask(id) {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else{
+        searchTitle.innerText = "Task not found";
+        searchTitle.style.color = "red";
+        const task_list = document.getElementById("task-list");
+          setTimeout(() => {
+            searchTitle.innerText = "Search Task";
+            searchTitle.style.color = "black";
+            task_list.innerHTML = "";
+          }, 1000);
+
+      }
+    })
     .then((data) => getTask(data));
 }
 
@@ -26,7 +40,7 @@ function getTask(task) {
     createCell(task.title),
     createCell(task.completed)
   );
-
+  task_list.innerHTML = "";
   task_list.appendChild(tableRow);
 }
 
