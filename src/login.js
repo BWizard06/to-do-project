@@ -38,7 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem('token');
     if (token) {
     loginTitle.style.color = "green";
-    loginTitle.innerText = "You are already     logged in";
+    loginTitle.innerText = "You are already logged in";
+    form.hidden = true;
 }
 })
 
